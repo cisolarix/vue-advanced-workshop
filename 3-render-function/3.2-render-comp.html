@@ -8,21 +8,25 @@
 <script>
 const Foo = {
   functional: true,
-  render: h => h('div', 'foo')
+  render(h) {
+    return h('div', 'foo')
+  }
 }
 
 const Bar = {
   functional: true,
-  render: h => h('div', 'bar')
+  render(h) {
+    return h('div', 'bar')
+  }
 }
 
 Vue.component('example', {
-  functional: true,
-  props: {
-    ok: Boolean
-  },
-  render: (h, context) => h(context.props.ok ? Foo : Bar)
+  props: ['ok'],
+  render(h) {
+    return h(this.ok ? Foo : Bar)
+  }
 })
+
 
 new Vue({
   el: '#app',

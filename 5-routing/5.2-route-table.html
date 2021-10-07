@@ -20,14 +20,15 @@ const routeTable = {
   bar: Bar
 }
 
-window.addEventListener('hashchange', () => {
-  app.url = window.location.hash.slice(1)
-})
-
 const app = new Vue({
   el: '#app',
   data: {
     url: 'foo'
+  },
+  mounted() {
+    window.addEventListener('hashchange', () => {
+      this.url = window.location.hash.slice(1)
+    })
   },
   computed: {
     matchedComponent () {

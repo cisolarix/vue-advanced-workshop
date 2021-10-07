@@ -10,29 +10,31 @@
 <script>
 // copy and modify the first exercise to use a Vue instance as
 // a shared store instead.
-const state = new Vue({
-  data: {
-    count: 0
+const vm = new Vue({
+  data() {
+    return {
+      count: 0
+    }
   },
   methods: {
-    inc () {
+    inc() {
       this.count++
     }
   }
 })
 
 const Counter = {
-  render: h => h('div', state.count)
+  render(h) {
+    return h('div', vm.count)
+  }
 }
-
+ 
 new Vue({
   el: '#app',
-  components: {
-    Counter
-  },
+  components: { Counter },
   methods: {
-    inc () {
-      state.inc()
+    inc() {
+      vm.inc()
     }
   }
 })

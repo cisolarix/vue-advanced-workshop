@@ -17,23 +17,19 @@ const state = {
 }
 
 const Counter = {
-  // Convert state into reactive object
-  data () {
+  data() {
     return state
   },
-  render (h) {
-    // Proxy the object
+  render(h) {
     return h('div', this.count)
   }
 }
 
 new Vue({
   el: '#app',
-  components: {
-    Counter
-  },
+  components: { Counter },
   methods: {
-    inc () {
+    inc() {
       state.count++
     }
   }

@@ -20,23 +20,27 @@
 </div>
 
 <script>
-window.addEventListener('hashchange', () => {
-  app.url = window.location.hash.slice(1)
-})
 
-const app = new Vue({
-  el: '#app',
-  data: {
-    url: 'foo'
-  },
-  components: {
-    foo: { template: `<div>foo</div>`},
-    bar: { template: `<div>bar</div>`},
-  },
-  methods: {
-    routeTo (route) {
-      window.location.hash = route
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        url: 'foo'
+      }
+    },
+    components: {
+      foo: { template: `<div>foo</div>` },
+      bar: { template: `<div>bar</div>` }
+    },
+    mounted() {
+      window.addEventListener('hashchange', () => {
+        this.url = window.location.hash.slice(1)
+      })
+    },
+    methods: {
+      routeTo(url) {
+        window.location.hash = url
+      }
     }
-  }
-})
+  })
 </script>

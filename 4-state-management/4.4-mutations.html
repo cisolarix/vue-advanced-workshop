@@ -14,9 +14,9 @@ function createStore ({ state, mutations }) {
       state
     },
     methods: {
-      commit (mutation) {
+      commit(mutation) {
         if (!mutations.hasOwnProperty(mutation)) {
-          throw new Error('Unknown mutation')
+          throw new Error('unknown mutation')
         }
         mutations[mutation](state)
       }
